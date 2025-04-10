@@ -22,7 +22,7 @@ const WalletOverview = () => {
   };
 
   return (
-    <div className=" rounded-lg p-6 space-y-6 shadow-lg">
+    <div className=" bg-[#F9F9F7] rounded-lg p-6 space-y-6 shadow-lg">
       {/* Actual Balance Section */}
       <div className="space-y-4">
         <div className="flex justify-between items-center">
@@ -54,14 +54,14 @@ const WalletOverview = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
         <button 
           onClick={() => setIsModalOpen(true)}
-          className=" bg-gray-100 hover:bg-[#FFDE02] text-[11px] text-black px-4 py-2 rounded-lg "
+          className=" bg-gray-100 hover:bg-[#FFDE02] text-[11px] border text-black px-4 py-2 rounded-lg "
         >
           Add Funds
         </button>
 
         <button 
           onClick={() => setIsWithdrawalModalOpen(true)}
-          className="w-full py-3 px-4 text-[11px] bg-gray-100 hover:bg-[#FFDE02] text-black font-medium rounded-md"
+          className="w-full py-3 px-4 text-[11px] bg-gray-100 border hover:bg-[#FFDE02] text-black font-medium rounded-md"
         >
           Withdrawal
         </button>
@@ -81,13 +81,13 @@ const WalletOverview = () => {
       
       {/* Extra Options */}
       <div className="grid grid-cols-3 gap-2 pt-2">
-        <button className="py-2 text-center text-[11px] text-gray-600 hover:bg-[#FFDE02] rounded-md">
+        <button className="py-2 text-center px-2 text-[11px] border text-gray-600 hover:bg-[#FFDE02] rounded-md">
           Transfer to Beam User
         </button>
-        <button className="py-2 text-center text-[11px] text-gray-600 hover:bg-[#FFDE02] rounded-md">
+        <button className="py-2 text-center px-2 text-[11px] border text-gray-600 hover:bg-[#FFDE02] rounded-md">
           Place Lien
         </button>
-        <button className="py-2 text-center text-[11px] text-gray-600 hover:bg-[#FFDE02] rounded-md">
+        <button className="py-2 text-center px-2 text-[11px] border text-gray-600 hover:bg-[#FFDE02] rounded-md">
           Freeze Wallet
         </button>
       </div>

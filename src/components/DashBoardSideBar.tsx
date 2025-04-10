@@ -1,11 +1,23 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LayoutGrid, Users, ShoppingCart, BarChart3, ArrowRightLeft, Wallet, Bell, Settings, LogOut, HelpCircle } from 'lucide-react';
 import logo from "../assets/Logo.svg"
 import { useTheme } from 'next-themes';
+import { toast } from "@/components/ui/use-toast";
 
 const DashboardSidebar = () => {
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    toast({
+      title: "Logged out",
+      description: "You have been successfully logged out",
+    });
+    navigate('/signin');
+  };
+
   // Define menu items for the sidebar
   const mainMenuItems = [
     { icon: LayoutGrid, label: 'Overview', path: '/dashboard' },
@@ -19,7 +31,7 @@ const DashboardSidebar = () => {
   const otherMenuItems = [
     { icon: Bell, label: 'Notification', path: '/dashboard/notifications' },
     { icon: Settings, label: 'Settings', path: '/dashboard/settings' },
-    { icon: LogOut, label: 'Logout', path: '/logout' },
+    { icon: LogOut, label: 'Logout', path: '#', onClick: handleLogout }, // Updated this item
     { icon: HelpCircle, label: 'Help', path: '/dashboard/help' },
   ];
 
@@ -66,13 +78,23 @@ const DashboardSidebar = () => {
           <ul className="space-y-2">
             {otherMenuItems.map((item, index) => (
               <li key={index}>
-                <Link 
-                  to={item.path} 
-                  className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-gray-800"
-                >
-                  <item.icon size={18} className="text-gray-400" />
-                  <span className="text-gray-400">{item.label}</span>
-                </Link>
+                {item.onClick ? (
+                  <button 
+                    onClick={item.onClick}
+                    className="w-full flex items-center gap-3 py-2 px-3 rounded-md hover:bg-gray-800"
+                  >
+                    <item.icon size={18} className="text-gray-400" />
+                    <span className="text-gray-400">{item.label}</span>
+                  </button>
+                ) : (
+                  <Link 
+                    to={item.path} 
+                    className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-gray-800"
+                  >
+                    <item.icon size={18} className="text-gray-400" />
+                    <span className="text-gray-400">{item.label}</span>
+                  </Link>
+                )}
               </li>
             ))}
           

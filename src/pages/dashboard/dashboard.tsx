@@ -2,24 +2,39 @@ import DashboardHeader from '@/components/DashBoardHeader';
 import DashboardSidebar from '@/components/DashBoardSideBar';
 import TransactionHistory from '@/components/TransactionHistory';
 import WalletOverview from '@/components/WalletOverview';
+import { useNavigate } from 'react-router-dom';
+import { LogOut } from 'lucide-react';
+import { toast } from "@/components/ui/use-toast";
 
 
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    toast({
+      title: "Logged out",
+      description: "You have been successfully logged out",
+    });
+    navigate('/signin');
+  };
+
   return (
     <div className="flex flex-col lg:flex-row min-h-screen">
-      {/* Left Sidebar */}
+      {/* Mobile Header */}
       <div className="lg:hidden">
         <DashboardHeader />
       </div>
-      <div  className="hidden lg:block" >
-      <DashboardSidebar/>
-      </div>
-   
       
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block">
+        <DashboardSidebar />
+      </div>
+
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        {/* Header - Only show on desktop */}
+        {/* Desktop Header */}
         <div className="hidden lg:block">
           <DashboardHeader />
         </div>
@@ -37,6 +52,17 @@ const Dashboard = () => {
               <TransactionHistory />
             </div>
           </div>
+        </div>
+
+        {/* Mobile Logout Button - Fixed at bottom */}
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t lg:hidden">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center justify-center gap-2 bg-red-50 text-red-600 py-3 rounded-lg"
+          >
+            <LogOut size={20} />
+            <span>Logout</span>
+          </button>
         </div>
       </div>
     </div>
