@@ -12,6 +12,7 @@ export interface LoginResponse extends StandardResponse  {
   data?: {
   
     user: User;
+    token?: string;
   };
 }
 
