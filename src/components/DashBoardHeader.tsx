@@ -15,7 +15,7 @@ const DashboardHeader = () => {
           </div>
           <input
             type="text"
-            className="bg-gray-100 border border-transparent rounded-md py-2 pl-10 pr-4 w-full focus:outline-none focus:bg-white focus:border-gray-300"
+            className="bg-gray-100 dark:bg-gray-700  border border-transparent rounded-md py-2 pl-10 pr-4 w-full focus:outline-none focus:bg-white focus:border-gray-300"
             placeholder="Search"
           />
         </div>
@@ -33,7 +33,7 @@ const DashboardHeader = () => {
             <div className="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center text-gray-700 font-medium">
               M
             </div>
-            <div className="text-sm text-gray-700 font-medium">{user?.name}</div>
+            <div className="text-sm text-gray-700 dark:text-white font-medium">{user?.name}</div>
             <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>

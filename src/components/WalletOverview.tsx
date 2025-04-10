@@ -22,7 +22,7 @@ const WalletOverview = () => {
   };
 
   return (
-    <div className=" bg-[#F9F9F7] rounded-lg p-6 space-y-6 shadow-lg">
+    <div className=" dark:bg-gray-800  bg-[#F9F9F7] rounded-lg p-6 space-y-6 shadow-lg">
       {/* Actual Balance Section */}
       <div className="space-y-4">
         <div className="flex justify-between items-center">

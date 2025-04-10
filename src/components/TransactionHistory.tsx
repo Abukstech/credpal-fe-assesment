@@ -33,7 +33,7 @@ const TransactionHistory = () => {
 
   
   return (
-    <div className=" border-gray-200 lg:min-w-3xl">
+    <div className=" bg-white dark:bg-gray-800 lg:bg-none border-gray-200 lg:min-w-3xl">
       <div className="p-6">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-4 space-y-4 lg:space-y-0">
           <div>
@@ -112,7 +112,7 @@ const TransactionHistory = () => {
           </TableHeader>
           <TableBody>
             {filteredTransactions.map((transaction, index) => (
-              <TableRow key={index} className="hover:bg-gray-50">
+              <TableRow key={index} className="dhover:bg-gray-50">
                 <TableCell className="font-medium py-4">{transaction.transactionId}</TableCell>
                 <TableCell className="py-4">{transaction.type.toLocaleUpperCase()}</TableCell>
                 <TableCell className="py-4">₦{transaction.amount.toLocaleString()!}</TableCell>
