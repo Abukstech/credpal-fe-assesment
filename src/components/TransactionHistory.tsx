@@ -15,11 +15,16 @@ const TransactionHistory = () => {
 
  
 
-  const [activeFilter, setActiveFilter] = useState('3 years');
+  const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
     fetchTransactions(currentPage);
   }, [currentPage]);
+
+  const filteredTransactions = transactions.filter(transaction => {
+    if (activeFilter === 'all') return true;
+    return transaction.status === activeFilter.toLowerCase();
+  });
 
   const handlePageChange = (page: number) => {
     fetchTransactions(page);
@@ -30,12 +35,12 @@ const TransactionHistory = () => {
   return (
     <div className="bg-white border-gray-200 lg:min-w-3xl">
       <div className="p-6">
-        <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-4 space-y-4 lg:space-y-0">
           <div>
             <h2 className="text-lg font-semibold text-[#1F384C] mb-2">Transaction History</h2>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 lg:space-x-4 overflow-x-auto">
               <div className="flex">
-                {['3 years', 'Approved', 'Pending'].map((filter) => (
+                {['all', 'approved', 'pending'].map((filter) => (
                   <button
                     key={filter}
                     className={`px-4 py-1.5 text-[12px] ${activeFilter === filter 
@@ -43,7 +48,7 @@ const TransactionHistory = () => {
                       : 'text-gray-600'} rounded-md`}
                     onClick={() => setActiveFilter(filter)}
                   >
-                    {filter}
+                    {filter.charAt(0).toUpperCase() + filter.slice(1)}
                   </button>
                 ))}
                 <button className="px-4 py-1.5 border border-gray-300 rounded-md text-[12px] font-medium">
@@ -62,10 +67,16 @@ const TransactionHistory = () => {
         </div>
         
         {/* Transaction Table with increased spacing */}
+
+        <div className="overflow-x-auto -mx-4 lg:mx-0">
+      <div className="min-w-[800px] lg:w-full">
+        
+      </div>
+    </div>
          
         {isLoading ? (
           <TableSkeleton />
-        ) : transactions.length === 0 ? (
+        ) : filteredTransactions.length === 0 ? (
           <div className="text-center py-16">
             <div className="w-24 h-24 mx-auto mb-4">
               <svg className="w-full h-full text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,7 +93,12 @@ const TransactionHistory = () => {
             </button>
           </div>
         ) : (
+          <div className="overflow-x-auto -mx-4 lg:mx-0">
+      <div className="min-w-[800px] lg:w-full">
+        {/* Your existing table code */}
+   
         <>
+        
         <Table>
           <TableHeader>
             <TableRow className="hover:bg-gray-50">
@@ -95,7 +111,7 @@ const TransactionHistory = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {transactions.map((transaction, index) => (
+            {filteredTransactions.map((transaction, index) => (
               <TableRow key={index} className="hover:bg-gray-50">
                 <TableCell className="font-medium py-4">{transaction.transactionId}</TableCell>
                 <TableCell className="py-4">{transaction.type.toLocaleUpperCase()}</TableCell>
@@ -162,6 +178,8 @@ const TransactionHistory = () => {
           </div>
         </div>
         </>
+        </div>
+        </div>
       )}
       </div>
     </div>

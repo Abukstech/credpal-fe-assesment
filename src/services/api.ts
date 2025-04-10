@@ -34,7 +34,7 @@ export const authAPI = {
 
   
 
-  getTransactions: (page:number) => api.get<transactionsResponse>(`/transactions/history?page=${page}&limit=10`),
+  getTransactions: (page:number) => api.get<transactionsResponse>(`/transactions/history?page=${page}&limit=5`),
   
   logout: () => api.post<StandardResponse>('/auth/logout'), // Add this new logout endpoint
   
