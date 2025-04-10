@@ -11,6 +11,7 @@ import SigninPage from "./pages/auth/Signin";
 import Dashboard from "./pages/dashboard/dashboard";
 import { AuthProvider } from "./context/AuthContext";
 import { TransactionProvider } from "./context/TransactionContext";
+import { ThemeProvider } from 'next-themes';
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,7 @@ const App = () => (
     <AuthProvider>
       <TransactionProvider>
 
-  
+      <ThemeProvider attribute="class" defaultTheme="light">
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -34,6 +35,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
+    </ThemeProvider>
     </TransactionProvider>
     </AuthProvider>
   </QueryClientProvider>

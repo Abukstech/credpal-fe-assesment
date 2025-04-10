@@ -33,7 +33,7 @@ const TransactionHistory = () => {
 
   
   return (
-    <div className="bg-white border-gray-200 lg:min-w-3xl">
+    <div className=" border-gray-200 lg:min-w-3xl">
       <div className="p-6">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-4 space-y-4 lg:space-y-0">
           <div>
@@ -155,7 +155,7 @@ const TransactionHistory = () => {
               <span className="px-3 py-1 text-sm">{currentPage} of {totalPages}</span>
               </div>
          
-              <div className={`px-3 py-1 bg-gray-50 ${currentPage === 1 ? 'border-1 border-[#FFC130]'  : ''}`}>
+              <div className={`px-3 py-1  ${currentPage === 1 ? 'border-1 border-[#FFC130]'  : ''}`}>
 <span                   >{currentPage}</span>
               </div>
               <div className=" border border-gray-200 rounded flex gap-3">

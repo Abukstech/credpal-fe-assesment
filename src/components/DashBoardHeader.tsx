@@ -6,7 +6,7 @@ const DashboardHeader = () => {
 
   const {user} = useAuth();
   return (
-    <header className="border-b border-gray-200 py-4 px-6 bg-white">
+    <header className="border-b border-gray-200 py-4 px-6 ">
       <div className="flex items-center justify-between">
         {/* Search */}
         <div className="relative flex-1 max-w-md">

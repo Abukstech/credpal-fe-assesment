@@ -2,8 +2,10 @@
 import { Link } from 'react-router-dom';
 import { LayoutGrid, Users, ShoppingCart, BarChart3, ArrowRightLeft, Wallet, Bell, Settings, LogOut, HelpCircle } from 'lucide-react';
 import logo from "../assets/Logo.svg"
+import { useTheme } from 'next-themes';
 
 const DashboardSidebar = () => {
+  const { theme, setTheme } = useTheme();
   // Define menu items for the sidebar
   const mainMenuItems = [
     { icon: LayoutGrid, label: 'Overview', path: '/dashboard' },
@@ -73,14 +75,22 @@ const DashboardSidebar = () => {
                 </Link>
               </li>
             ))}
+          
             <div className="mt-8">
-        <div className="flex items-center justify-between bg-white p-3 rounded-md">
-          <span className="text-sm text-gray-400">Switch to dark mode</span>
-          <div className="w-10 h-5 bg-gray-700 rounded-full p-1 flex items-center">
-            <div className="bg-white w-3 h-3 rounded-full"></div>
-          </div>
-        </div>
-      </div>
+              <div className="flex items-center justify-between bg-white dark:bg-gray-800 p-3 rounded-md">
+                <span className="text-sm text-gray-400">Switch to dark mode</span>
+                <button
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className="w-10 h-5 bg-gray-700 rounded-full p-1 flex items-center cursor-pointer"
+                >
+                  <div 
+                    className={`bg-white w-3 h-3 rounded-full transform transition-transform duration-200 ${
+                      theme === 'dark' ? 'translate-x-5' : 'translate-x-0'
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
           </ul>
           
         </nav>

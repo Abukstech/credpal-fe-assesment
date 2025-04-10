@@ -22,7 +22,7 @@ const WalletOverview = () => {
   };
 
   return (
-    <div className="bg-gray-50 rounded-lg p-6 space-y-6 shadow-lg">
+    <div className=" rounded-lg p-6 space-y-6 shadow-lg">
       {/* Actual Balance Section */}
       <div className="space-y-4">
         <div className="flex justify-between items-center">
@@ -54,7 +54,7 @@ const WalletOverview = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-[#FFDE02] text-black px-4 py-2 rounded-lg hover:bg-[#FFE533]"
+          className=" bg-gray-100 hover:bg-[#FFDE02] text-[11px] text-black px-4 py-2 rounded-lg "
         >
           Add Funds
         </button>
