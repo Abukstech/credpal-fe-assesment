@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 import { Scale, ShieldCheck, BadgeCheck } from 'lucide-react';
 
 export function AuthSidebar() {

@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { authAPI } from '../services/api';
-import Cookies from 'js-cookie';
+
 ;
 import { ErrorResponse } from '@/types/errorResponse';
 import { User } from '@/types/user';
@@ -20,7 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<any | null>(null);
   const [balance, setBalance] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading] = useState(true);
 
   // useEffect(() => {
   //   // Check for stored token in cookies
@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = async (email: string, password: string, name: string) => {
     try {
-      const response = await authAPI.signup({ email, password, name });
+      await authAPI.signup({ email, password, name });
       // Set HTTP-only cookie from backend response
       
     } catch (error: any) {

@@ -2,7 +2,7 @@ import DashboardHeader from '@/components/DashBoardHeader';
 import DashboardSidebar from '@/components/DashBoardSideBar';
 import TransactionHistory from '@/components/TransactionHistory';
 import WalletOverview from '@/components/WalletOverview';
-import React from 'react';
+
 
 
 const Dashboard = () => {

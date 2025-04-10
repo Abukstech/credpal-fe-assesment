@@ -1,5 +1,4 @@
 
-import React from "react";
 import SignupPage from "./auth/SignupPage";
 
 const Index = () => {

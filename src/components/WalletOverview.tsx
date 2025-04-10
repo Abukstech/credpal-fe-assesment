@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { CreditCard, Clock, Copy, Landmark } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { useTransactions } from '@/context/TransactionContext';
 import WithdrawalModal from './WithdrawalModal';
 
 const WalletOverview = () => {
-  const { user, balance, fetchBalance } = useAuth();
+  const {  balance, fetchBalance } = useAuth();
   const { fetchTransactions, currentPage } = useTransactions();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
